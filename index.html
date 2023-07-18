@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: #9CECFB;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0052D4, #65C7F7);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0052D4, #65C7F7);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .Container {
+            border: 1px solid white;
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        /* CSS styles for the input field */
+        .date-input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+
+        @media screen and (min-width: 600px) {
+            .Container {
+                width: 100% !important;
+                font-size: 48px;
+                height: 100vh;
+            }
+
+            .date-input {
+                padding: 10px;
+                font-size: 30px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Container">
+        <h2>Notice_Period_status</h2>
+        <label for="date">Select a Date:</label>
+        <input type="date" id="date" class="date-input">
+        <br>
+        <br>
+        <label for="last-date">Select the Last Date:</label>
+        <input type="date" id="last-date" class="date-input">
+
+        <p id="remaining-days"></p>
+    </div>
+
+    <script>
+        // JavaScript code to handle the selected date
+        var dateInput = document.getElementById('date');
+        var lastDateInput = document.getElementById('last-date');
+
+        dateInput.addEventListener('change', function () {
+            var presentDate = new Date();
+            var selectedDate = new Date(dateInput.value);
+            var lastDay = new Date(lastDateInput.value);
+
+            if (selectedDate <= lastDay && selectedDate >= presentDate) {
+                var remainingDays = Math.floor((lastDay - selectedDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('remaining-days').textContent = 'Remaining days: ' + remainingDays;
+            }
+        });
+
+        lastDateInput.addEventListener('change', function () {
+            var presentDate = new Date();
+            var selectedDate = new Date(dateInput.value);
+            var lastDay = new Date(lastDateInput.value);
+
+            if (selectedDate <= lastDay && selectedDate >= presentDate) {
+                var remainingDays = Math.floor((lastDay - selectedDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('remaining-days').textContent = 'Remaining days: ' + remainingDays;
+            }
+
+            var selectedDate = new Date(dateInput.value);
+            var lastDay = new Date(lastDateInput.value);
+
+            if (selectedDate <= lastDay && selectedDate >= presentDate) {
+                var remainingDays = Math.floor((lastDay - selectedDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('remaining-days').textContent = 'Remaining days: ' + remainingDays;
+            }
+        });
+    </script>
+</body>
+
+</html>
